@@ -16,22 +16,18 @@ public id?:number;
 public name:string="";
 
 
-
 constructor (private route:ActivatedRoute, private router:Router, private coursesService:CoursesService){
-
 
 this.coursesService.getCourse(this.route.snapshot.params['id']).subscribe((course)=>{
   this.name=course.name;
  this.id=course.id;
 });
-
 }
 
 public courseSubmit(form:NgForm){
  this.coursesService.updateCourse({id:this.id, ...form.form.value}).subscribe((data)=>{
     
-        this.router.navigate(['courses', 'list']);
-      
+        this.router.navigate(['courses', 'list']);      
 })
  }
 }

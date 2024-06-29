@@ -33,9 +33,10 @@ const sql="UPDATE courses SET name=? WHERE id=?";
             "success":true
         })
     }
-     static async delete(req:any, res:any){
+
+static async delete(req:any, res:any){
 const sql="DELETE FROM courses WHERE id=?";
-        await pool.query(sql, [req.body.id]);
+        await pool.query(sql, [req.params.id]);
         res.json({
             "success":true
         })

@@ -17,7 +17,7 @@
 
                     <td>
                         <a class="btn btn-success" [routerLink]="['/courses',course.id]">Redaguoti</a>&nbsp;&nbsp;
-
+                        <button class="btn btn-danger" (click)="deleteCourse(course.id!)">Ištrinti</button>
                     </td>
 
                 </tr>

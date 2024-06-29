@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-header">Grupiu sąrašas</div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nr</th>
+                    <th>Pavadinimas</th>
+
+
+
+
+                    <th>Veiksmai</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let group of groups; let y=index;">
+                    <td>{{ y+1 }}</td>
+                    <td>{{ group.name }}</td>
+
+
+
+
+                    <td>
+                        <a class="btn btn-success" [routerLink]="['/groups',group.id]">Redaguoti</a>&nbsp;&nbsp;
+                        <button class="btn btn-danger" (click)="deleteGroup(group.id!)">Ištrinti</button>
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>

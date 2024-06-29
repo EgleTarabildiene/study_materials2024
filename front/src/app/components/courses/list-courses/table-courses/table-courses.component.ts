@@ -24,13 +24,11 @@ export class TableCoursesComponent {
     this.loadCourses();
   }
 
-  public deleteProduct(id:number){
+  public deleteCourse(id:number){
     this.coursesService.deleteCourse(id).subscribe((data)=>{
       this.loadCourses();
     });
 
   }
-
-
 
 }

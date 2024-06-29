@@ -16,5 +16,5 @@ app.use(express_1.default.urlencoded({ extended: false }));
 app.use(express_1.default.json());
 //Į visus response header'ius įkeliame CORS nurodymus
 app.use(cors_middleware_1.corsHeaders);
-app.use('/groups', groups_router_1.groupsRouter);
 app.use('/courses', courses_router_1.coursesRouter);
+app.use('/groups', groups_router_1.groupsRouter);

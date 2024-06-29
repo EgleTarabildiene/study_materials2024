@@ -12,4 +12,4 @@ coursesRouter.get("/", courses_controller_1.CoursesController.getAll);
 coursesRouter.get("/:id", courses_controller_1.CoursesController.getCourse);
 coursesRouter.post("/", courses_controller_1.CoursesController.insert);
 coursesRouter.put("/", courses_controller_1.CoursesController.update);
-coursesRouter.delete("/", courses_controller_1.CoursesController.delete);
+coursesRouter.delete("/:id", courses_controller_1.CoursesController.delete);

@@ -9,7 +9,7 @@ coursesRouter.get("/:id", CoursesController.getCourse);
 
 coursesRouter.post("/", CoursesController.insert);
 coursesRouter.put("/", CoursesController.update);
-coursesRouter.delete("/", CoursesController.delete);
+coursesRouter.delete("/:id", CoursesController.delete);
 
 
 

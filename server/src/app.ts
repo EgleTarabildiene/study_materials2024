@@ -20,8 +20,9 @@ app.use(corsHeaders);
 
 
 
-app.use('/groups', groupsRouter);
+
 app.use('/courses', coursesRouter);
+app.use('/groups', groupsRouter);
 
 
 export {app};

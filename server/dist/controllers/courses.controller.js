@@ -47,7 +47,7 @@ class CoursesController {
     static delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const sql = "DELETE FROM courses WHERE id=?";
-            yield connect_1.pool.query(sql, [req.body.id]);
+            yield connect_1.pool.query(sql, [req.params.id]);
             res.json({
                 "success": true
             });
