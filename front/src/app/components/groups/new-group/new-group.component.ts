@@ -3,6 +3,8 @@ import { GroupsService } from '../../../services/groups.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
+import { Course } from '../../../models/course';
+import { CoursesService } from '../../../services/courses.service';
 
 @Component({
   selector: 'app-new-group',
@@ -12,8 +14,18 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrl: './new-group.component.css'
 })
 export class NewGroupComponent {
-    constructor (private groupsService:GroupsService, private router:Router){
 
+public courses:Course[]=[];
+public courseId:number|null=null;
+
+
+
+    constructor (private groupsService:GroupsService, private router:Router, private coursesService:CoursesService){
+coursesService.getCourses().subscribe({
+  next:(courses)=>{
+    this.courses=courses;
+  }
+})
   }
 
 

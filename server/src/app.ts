@@ -3,18 +3,19 @@ import express, {Application, Request, Response} from 'express';
 import { corsHeaders } from './middlewares/cors.middleware';
 import { groupsRouter } from './routes/groups.router';
 import { coursesRouter } from './routes/courses.router';
+import { lecturesRouter } from './routes/lectures.router';
 
 
 
 const app:Application=express();
 
-//Sutvarkomi duomenys jei buvo siusta forma
+
 app.use(express.urlencoded({ extended: false }));
 
-//Sutvarkomi duomenys jei buvo atsiustas JSON failas
+
 app.use(express.json());
 
-//Į visus response header'ius įkeliame CORS nurodymus
+
 app.use(corsHeaders);
 
 
@@ -23,6 +24,7 @@ app.use(corsHeaders);
 
 app.use('/courses', coursesRouter);
 app.use('/groups', groupsRouter);
+app.use('/lectures', lecturesRouter);
 
 
 export {app};

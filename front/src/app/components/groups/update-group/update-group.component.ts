@@ -4,6 +4,8 @@ import { GroupsService } from '../../../services/groups.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ErrorComponent } from '../../helper/error/error.component';
+import { Course } from '../../../models/course';
+import { CoursesService } from '../../../services/courses.service';
 
 @Component({
   selector: 'app-update-group',
@@ -13,20 +15,33 @@ import { ErrorComponent } from '../../helper/error/error.component';
   styleUrl: './update-group.component.css'
 })
 export class UpdateGroupComponent {
+  public courses:Course[]=[];
+public courseId:number|null=null;
+
 public id?:number;
 public name:string="";
+
 public isError=false;
 public errorText="";
 
 
 
 
-constructor (private route:ActivatedRoute, private router:Router, private groupsService:GroupsService){
+constructor (private route:ActivatedRoute, private router:Router, private groupsService:GroupsService, coursesService:CoursesService){
+     coursesService.getCourses().subscribe({
+      next:(courses)=>{
+        this.courses=courses;
+      }
+    })
+
+
 
 
 this.groupsService.getGroup(this.route.snapshot.params['id']).subscribe({
   next:(group)=>{
     this.name=group.name;
+    this.courseId=group.course_id;
+
     this.id=group.id;
   },
     error:(error)=>{

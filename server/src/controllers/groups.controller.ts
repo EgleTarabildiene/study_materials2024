@@ -26,8 +26,8 @@ export class GroupsController{
 
 
      static async insert(req:any, res:any){
-        const sql="INSERT INTO groupss (name) VALUES ( ? )";
-        await pool.query(sql, [req.body.name]);
+        const sql="INSERT INTO groupss (name, course_id) VALUES ( ?, ?)";
+        await pool.query(sql, [req.body.name, req.body.course_id]);
        res.status(201).json({
             "success":true
         })
@@ -35,9 +35,9 @@ export class GroupsController{
 
 
      static async update(req:any, res:any){
-const sql="UPDATE groupss SET name=? WHERE id=?";
+const sql="UPDATE groupss SET name=?, course_id=? WHERE id=?";
      try{   
-await pool.query(sql, [req.body.name, req.body.id]);
+await pool.query(sql, [req.body.name, req.body.course_id, req.body.id]);
         res.json({
             "success":true
         });

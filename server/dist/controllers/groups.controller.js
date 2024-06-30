@@ -35,8 +35,8 @@ class GroupsController {
     }
     static insert(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = "INSERT INTO groupss (name) VALUES ( ? )";
-            yield connect_1.pool.query(sql, [req.body.name]);
+            const sql = "INSERT INTO groupss (name, course_id) VALUES ( ?, ?)";
+            yield connect_1.pool.query(sql, [req.body.name, req.body.course_id]);
             res.status(201).json({
                 "success": true
             });
@@ -44,9 +44,9 @@ class GroupsController {
     }
     static update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = "UPDATE groupss SET name=? WHERE id=?";
+            const sql = "UPDATE groupss SET name=?, course_id=? WHERE id=?";
             try {
-                yield connect_1.pool.query(sql, [req.body.name, req.body.id]);
+                yield connect_1.pool.query(sql, [req.body.name, req.body.course_id, req.body.id]);
                 res.json({
                     "success": true
                 });

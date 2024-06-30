@@ -1,10 +1,11 @@
 
-export interface Group {
+export class Group {
 
-id?:number;
-name:string;
-
-   
- 
+    constructor (
+        public name:string,
+        public course_id:number,
+    
+        public id?:number,
+    ){}
    
 }

@@ -9,19 +9,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CoursesController = void 0;
+exports.LecturesController = void 0;
 const connect_1 = require("../db/connect");
-class CoursesController {
+class LecturesController {
     static getAll(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = "SELECT * FROM courses";
+            const sql = "SELECT * FROM lectures";
             const [result] = yield connect_1.pool.query(sql);
             res.json(result);
         });
     }
-    static getCourse(req, res) {
+    static getLecture(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = "SELECT * FROM courses WHERE id=?";
+            const sql = "SELECT * FROM lectures WHERE id=?";
             const [result] = yield connect_1.pool.query(sql, [req.params.id]);
             if (result.length == 0) {
                 return res.status(404).json({
@@ -35,7 +35,7 @@ class CoursesController {
     }
     static insert(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = "INSERT INTO courses (name) VALUES ( ? )";
+            const sql = "INSERT INTO lectures (name) VALUES ( ? )";
             yield connect_1.pool.query(sql, [req.body.name]);
             res.status(201).json({
                 "success": true
@@ -44,7 +44,7 @@ class CoursesController {
     }
     static update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = "UPDATE courses SET name=? WHERE id=?";
+            const sql = "UPDATE lectures SET name=? WHERE id=?";
             try {
                 yield connect_1.pool.query(sql, [req.body.name, req.body.id]);
                 res.json({
@@ -60,7 +60,7 @@ class CoursesController {
     }
     static delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = "DELETE FROM courses WHERE id=?";
+            const sql = "DELETE FROM lectures WHERE id=?";
             yield connect_1.pool.query(sql, [req.params.id]);
             res.json({
                 "success": true
@@ -68,4 +68,4 @@ class CoursesController {
         });
     }
 }
-exports.CoursesController = CoursesController;
+exports.LecturesController = LecturesController;
