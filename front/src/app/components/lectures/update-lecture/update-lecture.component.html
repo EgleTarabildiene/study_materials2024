@@ -7,6 +7,16 @@
                 <label for="" class="form-label">Pavadinimas</label>
                 <input type="text" class="form-control" name="name" value="" ngModel [(ngModel)]="name">
             </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Arasymas</label>
+                <input type="text" class="form-control" name="description" value="" ngModel [(ngModel)]="description">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Kursas</label>
+                <select class="form-control" name="group_id" [(ngModel)]="groupId">
+                    <option *ngFor="let group of groups; let i=index" [value]="group.id">{{ group.name }}</option>
+                </select>
+            </div>
 
 
 

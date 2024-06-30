@@ -35,8 +35,8 @@ class LecturesController {
     }
     static insert(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = "INSERT INTO lectures (name) VALUES ( ? )";
-            yield connect_1.pool.query(sql, [req.body.name]);
+            const sql = "INSERT INTO lectures (name, description, group_id) VALUES ( ?, ?, ? )";
+            yield connect_1.pool.query(sql, [req.body.name, req.body.description, req.body.group_id]);
             res.status(201).json({
                 "success": true
             });
@@ -44,9 +44,9 @@ class LecturesController {
     }
     static update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = "UPDATE lectures SET name=? WHERE id=?";
+            const sql = "UPDATE lectures SET name=?, description=?, group_id=? WHERE id=?";
             try {
-                yield connect_1.pool.query(sql, [req.body.name, req.body.id]);
+                yield connect_1.pool.query(sql, [req.body.name, req.body.description, req.body.group_id, req.body.id]);
                 res.json({
                     "success": true
                 });

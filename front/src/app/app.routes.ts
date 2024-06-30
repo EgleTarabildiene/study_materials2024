@@ -9,6 +9,8 @@ import { ListGroupsComponent } from './components/groups/list-groups/list-groups
 import { ListLecturesComponent } from './components/lectures/list-lectures/list-lectures.component';
 import { NewLectureComponent } from './components/lectures/new-lecture/new-lecture.component';
 import { UpdateLectureComponent } from './components/lectures/update-lecture/update-lecture.component';
+import { SigninComponent } from './components/auth/signin/signin.component';
+import { LoginComponent } from './components/auth/login/login.component';
 
 export const routes: Routes = [
     {path:"courses/list", component:ListCoursesComponent},
@@ -24,6 +26,8 @@ export const routes: Routes = [
 {path:"lectures/new", component:NewLectureComponent},
 {path:"lectures/:id", component:UpdateLectureComponent},
 
+    {path:"auth/signin", component:SigninComponent},
+    {path:"auth/login", component:LoginComponent},
 
 
 

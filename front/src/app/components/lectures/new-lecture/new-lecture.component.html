@@ -1,13 +1,25 @@
 <div class="card mt-3">
     <div class="card-header">Pridėti naują grupę</div>
     <div class="card-body">
-        <form (ngSubmit)="lectureSubmit(f)" #f="ngForm">
+        <form id="ngForm" (ngSubmit)="lectureSubmit(f)" #f="ngForm">
             <div class="mb-3">
                 <label for="" class="form-label">Paskaitos pavadinimas</label>
                 <input type="text" class="form-control" name="name" value="" ngModel minlength="2" maxlength="64" required #inputName="ngModel">
             </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Paskaitos aprasymas</label>
+                <input type="text" class="form-control" name="description" value="" ngModel minlength="2">
+            </div>
 
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="" class="form-label">grupes pavadinimas</label>
+                    <select class="form-control" name="group_id" [(ngModel)]="groupId">
+                        <option *ngFor="let group of groups; let i=index" [value]="group.id">{{ group.name }}</option>
 
+                    </select>
+                </div>
+            </div>
             <button class="btn btn-success" type="submit">Pridėti</button>
         </form>
 

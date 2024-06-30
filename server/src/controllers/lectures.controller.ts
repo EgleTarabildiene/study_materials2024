@@ -26,8 +26,8 @@ export class LecturesController{
 
 
      static async insert(req:any, res:any){
-        const sql="INSERT INTO lectures (name) VALUES ( ? )";
-        await pool.query(sql, [req.body.name]);
+        const sql="INSERT INTO lectures (name, description, group_id) VALUES ( ?, ?, ? )";
+        await pool.query(sql, [req.body.name, req.body.description, req.body.group_id]);
        res.status(201).json({
             "success":true
         })
@@ -35,9 +35,9 @@ export class LecturesController{
 
 
      static async update(req:any, res:any){
-const sql="UPDATE lectures SET name=? WHERE id=?";
+const sql="UPDATE lectures SET name=?, description=?, group_id=? WHERE id=?";
      try{   
-await pool.query(sql, [req.body.name, req.body.id]);
+await pool.query(sql, [req.body.name, req.body.description, req.body.group_id, req.body.id]);
         res.json({
             "success":true
         });

@@ -4,6 +4,7 @@ import { corsHeaders } from './middlewares/cors.middleware';
 import { groupsRouter } from './routes/groups.router';
 import { coursesRouter } from './routes/courses.router';
 import { lecturesRouter } from './routes/lectures.router';
+import { authRouter } from './routes/auth.router';
 
 
 
@@ -25,6 +26,7 @@ app.use(corsHeaders);
 app.use('/courses', coursesRouter);
 app.use('/groups', groupsRouter);
 app.use('/lectures', lecturesRouter);
+app.use('/auth', authRouter);
 
 
 export {app};

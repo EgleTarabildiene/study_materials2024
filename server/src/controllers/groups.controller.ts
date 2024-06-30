@@ -4,7 +4,11 @@ import { Group } from "../models/group";
 
 export class GroupsController{
     static async getAll( req:any, res:any){
-   
+       if (req.user.type>2){
+            return res.status(400).json({
+                text:"Neturite teisiu"
+            })
+        }
         const sql="SELECT * FROM groupss";
         const [result]=await pool.query<Group[]>(sql);
         res.json(result);

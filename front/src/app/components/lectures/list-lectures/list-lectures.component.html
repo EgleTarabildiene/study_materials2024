@@ -6,6 +6,8 @@
                 <tr>
                     <th>Nr</th>
                     <th>Pavadinimas</th>
+                    <th>Aprasymas</th>
+                    <th>Grupe</th>
 
 
 
@@ -17,6 +19,8 @@
                 <tr *ngFor="let lecture of lectures; let y=index;">
                     <td>{{ y+1 }}</td>
                     <td>{{ lecture.name }}</td>
+                    <td>{{ lecture.description }}</td>
+                    <td>{{ getGroupName(lecture.group_id) }}</td>
 
 
 
