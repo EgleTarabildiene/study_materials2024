@@ -11,6 +11,10 @@ import { NewLectureComponent } from './components/lectures/new-lecture/new-lectu
 import { UpdateLectureComponent } from './components/lectures/update-lecture/update-lecture.component';
 import { SigninComponent } from './components/auth/signin/signin.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import { viewGuard } from './guards/view.guard';
+import { ListUsersComponent } from './components/users/list-users/list-users.component';
+import { UpdateUserComponent } from './components/users/update-user/update-user.component';
+import { ProfileComponent } from './components/users/profile/profile.component';
 
 export const routes: Routes = [
     {path:"courses/list", component:ListCoursesComponent},
@@ -18,7 +22,9 @@ export const routes: Routes = [
     {path:"courses/:id", component:UpdateCourseComponent},
 
 
-{path:"groups/list", component:ListGroupsComponent},
+{path:"groups/list", component:ListGroupsComponent, canActivate:[viewGuard]
+
+},
 {path:"groups/new", component:NewGroupComponent},
 {path:"groups/:id", component:UpdateGroupComponent},
 
@@ -29,6 +35,20 @@ export const routes: Routes = [
     {path:"auth/signin", component:SigninComponent},
     {path:"auth/login", component:LoginComponent},
 
+        {   
+        path:"users/list",
+        component:ListUsersComponent,
+       
+    },
+    {
+        path:"users/:id",
+        component:UpdateUserComponent,
+        
+    },
+   {
+        path:"profile",
+        component:ProfileComponent
+    },
 
 
      {path:"", component:HomePageComponent},

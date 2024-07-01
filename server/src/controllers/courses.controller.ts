@@ -5,6 +5,11 @@ import { Course } from "../models/course";
 
 export class CoursesController{
     static async getAll( req:any, res:any){
+              if (req.user.type>2){
+            return res.status(400).json({
+                text:"Neturite teisiu"
+            })
+        }
    const sql="SELECT * FROM courses";
         const [result]=await pool.query<Course[]>(sql);
         res.json(result);

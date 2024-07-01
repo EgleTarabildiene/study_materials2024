@@ -4,6 +4,11 @@ import { Lecture } from "../models/lecture";
 
 export class LecturesController{
     static async getAll( req:any, res:any){
+              if (req.user.type>2){
+            return res.status(400).json({
+                text:"Neturite teisiu"
+            })
+        }
    
         const sql="SELECT * FROM lectures";
         const [result]=await pool.query<Lecture[]>(sql);

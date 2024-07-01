@@ -5,6 +5,8 @@ import { groupsRouter } from './routes/groups.router';
 import { coursesRouter } from './routes/courses.router';
 import { lecturesRouter } from './routes/lectures.router';
 import { authRouter } from './routes/auth.router';
+import { userRouter } from './routes/user.router';
+import path from 'path';
 
 
 
@@ -21,12 +23,13 @@ app.use(corsHeaders);
 
 
 
-
+app.use("/img", express.static( path.join("./img") ));
 
 app.use('/courses', coursesRouter);
 app.use('/groups', groupsRouter);
 app.use('/lectures', lecturesRouter);
 app.use('/auth', authRouter);
+app.use("/users", userRouter);
 
 
 export {app};

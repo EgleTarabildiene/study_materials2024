@@ -12,7 +12,7 @@
 
 
 
-                    <th>Veiksmai</th>
+                    <th *ngIf="authService.canEdit()">Veiksmai</th>
                 </tr>
             </thead>
             <tbody>

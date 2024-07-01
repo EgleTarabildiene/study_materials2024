@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { CoursesService } from '../../../../services/courses.service';
 import { Course } from '../../../../models/course';
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-table-groups',
@@ -30,7 +31,7 @@ private loadCourses(){
   }
 
 
-  constructor (private groupsService:GroupsService, private coursesService:CoursesService){
+  constructor (private groupsService:GroupsService, private coursesService:CoursesService, public authService:AuthService){
     this.loadGroups();
     this.loadCourses();
   }

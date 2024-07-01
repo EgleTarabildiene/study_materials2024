@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { ErrorComponent } from '../../helper/error/error.component';
+import { ErrorService } from '../../../services/error.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { ErrorComponent } from '../../helper/error/error.component';
 export class LoginComponent {
 
 
-  constructor (private authService:AuthService, private router:Router){
+  constructor (private authService:AuthService, private router:Router, private errorService:ErrorService ){
 
   }
 
@@ -25,6 +26,10 @@ export class LoginComponent {
      this.authService.loginUser(form.form.value).subscribe({
       next: (data)=>{ 
         this.router.navigate(['/']);
+     },
+      error: (error)=>{
+        this.errorService.errorEmitter.emit(error.error.text);
+
       }
 
      })
