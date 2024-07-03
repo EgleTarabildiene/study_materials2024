@@ -1,24 +1,24 @@
 import { pool } from "../db/connect";
-import { Group } from "../models/group"; 
 import { Student } from "../models/student";
 
 
-export class GroupsController{
+
+export class StudentsController{
     static async getAll( req:any, res:any){
        if (req.user.type>2){
             return res.status(400).json({
                 text:"Neturite teisiu"
             })
         }
-        const sql="SELECT * FROM groupss";
-        const [result]=await pool.query<Group[]>(sql);
+        const sql="SELECT * FROM students";
+        const [result]=await pool.query<Student[]>(sql);
         res.json(result);
     }
 
 
-   static async getGroup( req:any, res:any){
-   const sql="SELECT * FROM groupss WHERE id=?";
-        const [result]=await pool.query<Group[]>(sql, [req.params.id]);
+   static async getStudent( req:any, res:any){
+   const sql="SELECT * FROM students WHERE id=?";
+        const [result]=await pool.query<Student[]>(sql, [req.params.id]);
         if (result.length==0){
            return res.status(404).json({
                 'text':'Pateiktas įrašas nerastas'
@@ -31,14 +31,8 @@ export class GroupsController{
 
 
      static async insert(req:any, res:any){
-        const group:Group=req.body;
-
-        const sql="INSERT INTO groupss (name, course_id, start_date, end_date) VALUES ( ?, ?, ?, ?)";
-        const [result, fields]=await pool.query(sql, [group.name, group.course_id, group.start_date, group.end_date,]);
-        const insertId=(result as any).insertId;
-    
-
-
+        const sql="INSERT INTO students (name, surname ) VALUES ( ?, ?)";
+        await pool.query(sql, [req.body.name, req.body.surname]);
        res.status(201).json({
             "success":true
         })
@@ -46,9 +40,9 @@ export class GroupsController{
 
 
      static async update(req:any, res:any){
-const sql="UPDATE groupss SET name=?, course_id=?, start_date=?, end_date=?  WHERE id=?";
+const sql="UPDATE students SET name=?, surname=? WHERE id=?";
      try{   
-await pool.query(sql, [req.body.name, req.body.course_id, req.body.start_date, req.body.end_date, req.body.id]);
+await pool.query(sql, [req.body.name, req.body.surname, req.body.id]);
         res.json({
             "success":true
         });
@@ -62,7 +56,7 @@ await pool.query(sql, [req.body.name, req.body.course_id, req.body.start_date, r
 
 
 static async delete(req:any, res:any){
-const sql="DELETE FROM groupss WHERE id=?";
+const sql="DELETE FROM students WHERE id=?";
         await pool.query(sql, [req.params.id]);
         res.json({
             "success":true

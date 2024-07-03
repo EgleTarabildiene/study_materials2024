@@ -52,15 +52,5 @@ private loadCourses(){
     return result;
   }
 
-/*
-    public getLecturerName(id:number){
-    let result="";
-    this.lecturers.forEach((lecturer)=>{ 
-      if (lecturer.id==id) 
-        result= `${lecturer.name} ${lecturer.surname}`;
-    });
-    return result;
-  }
-*/
 
 }

@@ -15,9 +15,12 @@ import { viewGuard } from './guards/view.guard';
 import { ListUsersComponent } from './components/users/list-users/list-users.component';
 import { UpdateUserComponent } from './components/users/update-user/update-user.component';
 import { ProfileComponent } from './components/users/profile/profile.component';
+import { ListStudentsComponent } from './components/students/list-students/list-students.component';
+import { NewStudentComponent } from './components/students/new-student/new-student.component';
+import { UpdateStudentComponent } from './components/students/update-student/update-student.component';
 
 export const routes: Routes = [
-    {path:"courses/list", component:ListCoursesComponent},
+    {path:"courses/list", component:ListCoursesComponent, canActivate:[viewGuard]},
     {path:"courses/new", component:NewCourseComponent},
     {path:"courses/:id", component:UpdateCourseComponent},
 
@@ -28,9 +31,14 @@ export const routes: Routes = [
 {path:"groups/new", component:NewGroupComponent},
 {path:"groups/:id", component:UpdateGroupComponent},
 
-{path:"lectures/list", component:ListLecturesComponent},
+{path:"lectures/list", component:ListLecturesComponent, canActivate:[viewGuard]},
 {path:"lectures/new", component:NewLectureComponent},
 {path:"lectures/:id", component:UpdateLectureComponent},
+
+
+{path:"students/list", component:ListStudentsComponent, canActivate:[viewGuard]},
+{path:"students/new", component:NewStudentComponent},
+{path:"students/:id", component:UpdateStudentComponent},
 
     {path:"auth/signin", component:SigninComponent},
     {path:"auth/login", component:LoginComponent},

@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-header">Kursu sąrašas</div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nr</th>
+                    <th>Vardas</th>
+                    <th>Pavarde</th>
+
+                    <th>Veiksmai</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of students; let i=index;">
+                    <td>{{ i+1 }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.surname }}</td>
+
+                    <td>
+                        <a class="btn btn-success" [routerLink]="['/students',student.id]">Redaguoti</a>&nbsp;&nbsp;
+                        <button class="btn btn-danger" (click)="deleteStudent(student.id!)">Ištrinti</button>
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>

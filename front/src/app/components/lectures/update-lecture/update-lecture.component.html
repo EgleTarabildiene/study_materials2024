@@ -1,6 +1,6 @@
 <app-error [isError]="isError" [text]="errorText"></app-error>
 <div class="card mt-3">
-    <div class="card-header">Atnaujinti kursą</div>
+    <div class="card-header">Atnaujinti paskaita</div>
     <div class="card-body">
         <form (ngSubmit)="lectureSubmit(f)" #f="ngForm">
             <div class="mb-3">
@@ -12,9 +12,16 @@
                 <input type="text" class="form-control" name="description" value="" ngModel [(ngModel)]="description">
             </div>
             <div class="mb-3">
+                <label for="" class="form-label">Paskaitos data</label>
+                <input type="text" class="form-control" name="lecture_date" value="" ngModel [(ngModel)]="lecture_date">
+            </div>
+
+            <div class="mb-3">
                 <label for="" class="form-label">Kursas</label>
                 <select class="form-control" name="group_id" [(ngModel)]="groupId">
                     <option *ngFor="let group of groups; let i=index" [value]="group.id">{{ group.name }}</option>
+
+
                 </select>
             </div>
 

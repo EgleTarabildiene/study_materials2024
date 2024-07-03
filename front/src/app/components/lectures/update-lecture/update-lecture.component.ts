@@ -23,6 +23,7 @@ public groupId:number|null=null;
 public id?:number;
 public name:string="";
 public description:string="";
+public lecture_date:string="";
 public isError=false;
 public errorText="";
 
@@ -47,6 +48,7 @@ this.lecturesService.getLecture(this.route.snapshot.params['id']).subscribe({
     this.description=lecture.description;
     this.groupId=lecture.group_id;
     this.id=lecture.id;
+    this.lecture_date=lecture.lecture_date;
   },
     error:(error)=>{
       console.log(error.error.text);

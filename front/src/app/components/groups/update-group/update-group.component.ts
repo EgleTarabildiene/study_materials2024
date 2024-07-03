@@ -20,6 +20,8 @@ public courseId:number|null=null;
 
 public id?:number;
 public name:string="";
+public start_date:string="";
+public end_date:string="";
 
 public isError=false;
 public errorText="";
@@ -41,6 +43,8 @@ this.groupsService.getGroup(this.route.snapshot.params['id']).subscribe({
   next:(group)=>{
     this.name=group.name;
     this.courseId=group.course_id;
+    this.start_date=group.start_date;
+    this.end_date=group.end_date;
 
     this.id=group.id;
   },

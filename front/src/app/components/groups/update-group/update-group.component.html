@@ -13,6 +13,14 @@
                     <option *ngFor="let course of courses; let i=index" [value]="course.id">{{ course.name }}</option>
                 </select>
             </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Pradzia</label>
+                <input type="text" class="form-control" name="start_date" value="" ngModel [(ngModel)]="start_date">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Pabaiga</label>
+                <input type="text" class="form-control" name="end_date" value="" ngModel [(ngModel)]="end_date">
+            </div>
 
 
 
